@@ -9,7 +9,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private static final String FORECAST_SHARE_HASHTAG = " #SunshineApp";
 
-    private TextView mWeatherDisplay
+    private TextView mWeatherDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +18,13 @@ public class DetailActivity extends AppCompatActivity {
 
         // TODO (2) Display the weather forecast that was passed from MainActivity
         //COMPLETE
-        Intent intent= getIntent();
+        mWeatherDisplay = (TextView) findViewById(R.id.weather_text);
 
-        if(intent.hasExtra(intent.EXTRA_TEXT)){
-            mWeatherDisplay.setText(intent.getStringExtra(intent.EXTRA_TEXT));
+        Intent intent= getIntent();
+        if(intent != null) {
+            if (intent.hasExtra(intent.EXTRA_TEXT)) {
+                mWeatherDisplay.setText(intent.getStringExtra(intent.EXTRA_TEXT));
+            }
         }
     }
 }
